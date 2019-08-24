@@ -1,6 +1,10 @@
 <template>
     <div>
-       创建链接
+       <Row>
+         <Col span="24">
+
+         </Col>
+       </Row>
     </div>
 </template>
 
