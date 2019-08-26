@@ -1,7 +1,7 @@
 {
   "name": "iview-admin",
   "version": "2.0.0",
-  "author": "Lison<lison16new@163.com>",
+  "author": "Lison <lison16new@163.com>",
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve --open",
@@ -66,5 +66,11 @@
       "vue-cli-service lint",
       "git add"
     ]
-  }
+  },
+  "description": "<p align=\"center\">\r     <a href=\"https://www.iviewui.com\">\r         <img width=\"200\" src=\"https://file.iviewui.com/logo-new.svg\">\r     </a>\r </p>",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "license": "ISC"
 }

@@ -272,6 +272,35 @@ export default [
           title: '创建链接'
         },
         component: ()=> import('@/view/linkKindList/createCategory')
+      },
+      {
+        path:'kind_list',
+        name:'kind_list',
+        meta:{
+          icon:"md-add",
+          title:"查看分类列表"
+        },
+        component: ()=> import('@/view/linkKindList/kindList')
+      }
+    ]
+  },
+  {
+    path:'my_link_list',
+    name:'my_link_list',
+    meta:{
+      icon: 'ios-stats',
+      title: '我的链接'
+    },
+    component:Main,
+    children:[
+      {
+        path:'scan_link_list',
+        name:'scan_link_list',
+        meta:{
+          icon: 'ios-stats',
+          title: '我的链接列表'
+        },
+        component:()=> import('@/view/myLinkList/view_report.vue')
       }
     ]
   },
