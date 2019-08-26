@@ -52,7 +52,6 @@
           </Table>
         </i-col>
       </Row>
-
     </div>
 </template>
 
@@ -145,6 +144,7 @@
              ]
            }
         },
+
       methods: {
         show (index) {
           this.$Modal.info({

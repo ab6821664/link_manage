@@ -33,9 +33,9 @@
           </Card>
         </i-col>
       </Row>
-      <Row>
+      <div ref="domBar" style="height: 400px;">
 
-      </Row>
+      </div>
     </div>
 
 </template>
@@ -45,7 +45,8 @@
 <script>
   import {ChartBar} from '_c/charts'
   import ChartLine from '_c/charts/line.vue'
-
+  import echarts from 'echarts'
+  import {on, off} from '@/libs/tools'
     export default {
         name: "view_report",
       components: {
@@ -56,6 +57,7 @@
          return {
            switch1:true,
            lineData: {
+             dom:null,
              legend:[],
              xAxis: ['8-22', '8-22', '8-22', '8-22', '8-22', '8-22'],
              seriesData: [
@@ -75,9 +77,44 @@
          }
        },
       mounted(){
+        this.$nextTick(() => {
+          this.dom = echarts.init(this.$refs.domBar);
+          let option = {
+            dataset: {
+              source: [
+                ['score', 'amount', 'product'],
+                [89.3, 58212, '其它'],
+                [57.1, 78254, '上海'],
+                [74.4, 41032, '深圳'],
+                [50.1, 12755, '北京']
+              ]
+            },
+            color:"#2d8cf0",
+            grid: {containLabel: true},
+            xAxis: {name: 'amount'},
+            yAxis: {type: 'category'},
+            series: [
+              {
+                type: 'bar',
+                encode: {
+                  // Map the "amount" column to X axis.
+                  x: 'amount',
+                  // Map the "product" column to Y axis
+                  y: 'product'
+                }
+              }
+            ]
+          };
+          this.dom.setOption(option);
+          on(window, 'resize', this.resize)
+        })
 
       },
       methods:{
+          // resize echart
+        resize() {
+          this.dom.resize()
+        },
         change(){
 
         }

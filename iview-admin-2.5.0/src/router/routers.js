@@ -256,13 +256,13 @@ export default [
     component:Main,
     children:[
       {
-        path:'link_list',
-        name:'link_list',
+        path:'my_kind_list',
+        name:'my_kind_list',
         meta:{
-          icon: 'md-add',
-          title: ' 查看链接'
+          icon:"md-add",
+          title:"查看分类列表"
         },
-        component: ()=> import('@/view/linkKindList/linkList.vue')
+        component: ()=> import('@/view/linkKindList/kindList')
       },
       {
         path:'create_link',
@@ -272,36 +272,48 @@ export default [
           title: '创建链接'
         },
         component: ()=> import('@/view/linkKindList/createCategory')
-      },
-      {
-        path:'kind_list',
-        name:'kind_list',
-        meta:{
-          icon:"md-add",
-          title:"查看分类列表"
-        },
-        component: ()=> import('@/view/linkKindList/kindList')
       }
     ]
   },
   {
-    path:'my_link_list',
-    name:'my_link_list',
+    path:'/link',
+    name:'link',
     meta:{
       icon: 'ios-stats',
-      title: '我的链接'
+      title: '链接列表'
     },
     component:Main,
     children:[
+      {
+        path:'link_list',
+        name:'link_list',
+        meta:{
+          icon: 'md-add',
+          title: ' 查看链接列表'
+        },
+        component: ()=> import('@/view/linkKindList/linkList.vue')
+      },
       {
         path:'scan_link_list',
         name:'scan_link_list',
         meta:{
           icon: 'ios-stats',
-          title: '我的链接列表'
+          title: '我的链接'
         },
         component:()=> import('@/view/myLinkList/view_report.vue')
       }
+    ]
+  },
+  {
+    path:'/create_link',
+    name:'create_link',
+    meta:{
+      icon: 'ios-stats',
+      title: '创建链接'
+    },
+    component:Main,
+    children:[
+
     ]
   },
   {

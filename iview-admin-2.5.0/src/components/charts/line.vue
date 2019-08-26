@@ -26,15 +26,12 @@
       }
     },
     mounted() {
-      console.log(111)
       this.$nextTick(() => {
-        console.log(this.value)
         let xAxisData = this.value.xAxis
         let series = []
           let legent = []
         let data = this.value.seriesData
         for (let i = 0; i < data.length; i++) {
-          console.log(i)
           let params = {}
           params.type = 'line'
           params.name = data[i].name
@@ -60,7 +57,6 @@
           },
           series: series
         }
-        console.log(option)
         this.dom = echarts.init(this.$refs.dom, 'tdTheme')
         this.dom.setOption(option)
         on(window, 'resize', this.resize)
