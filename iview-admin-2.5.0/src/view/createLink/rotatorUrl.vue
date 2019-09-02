@@ -19,11 +19,40 @@
            <div class="row">
               <p class="label-tip">Redirect mode</p>
               <div>
-                <Select v-model="mode" style="width:100%">
+                <Select v-model="mode" style="width:95%">
                   <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
+                <Icon type="ios-trash" style="font-size: 15px;margin-left: 3%;color: red"/>
               </div>
            </div>
+           <div class="row">
+             <p class="label-tip">Destination URL 1</p>
+             <div>
+               <Select v-model="mode" style="width:95%">
+                 <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+               </Select>
+               <Icon type="ios-trash" style="font-size: 15px;margin-left: 3%;color: red"/>
+             </div>
+           </div>
+          <div class="row">
+            <div style="display: flex;justify-content: space-between;margin-top: 25px">
+                <div >
+                  <span style="font-size: 14px;margin-right: 20px">分类:</span>
+                  <Select v-model="mode" style="width:300px">
+                  <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                   </Select>
+                </div>
+                 <div>
+                   <Button type="primary" ghost>Add destination Url <Icon type="md-add" /></Button>
+                 </div>
+            </div>
+          </div>
+          <div class="row">
+              <div style="text-align: center;margin-top: 20px">
+                <Button style="width:150px">取消</Button>
+                <Button type="primary" style="width:150px;margin-left: 30px">>确认</Button>
+              </div>
+          </div>
         </div>
       </div>
     </div>
