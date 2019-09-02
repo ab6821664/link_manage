@@ -43,5 +43,17 @@ export default {
   tree_table_page: 'Tree Table',
   org_tree_page: 'Org Tree',
   drag_drawer_page: 'Draggable Drawer',
-  tree_select_page: 'Tree Selector'
+  tree_select_page: 'Tree Selector',
+  super2:'SUPL 2.0 URL',
+  rotator:'URL Rotator',
+  amzLink:'AMZ Choice URL',
+  buyTogetherURL:'Buy Together URL',
+  searchFindBuyLink:'Search Find Buy URL',
+  canonicalLink:'Canonical URL',
+  amazonPlainLink:'Amazon Plain URL',
+  anyLink:'Any URL',
+  addToCart:'Add to Cart URL',
+  starReview:'5 Star Review URL',
+  stepStorefrontLink:'2 Step Storefront URL',
+  stepBrand:'2 Step Brand URL',
 }

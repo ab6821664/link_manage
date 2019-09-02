@@ -265,11 +265,11 @@ export default [
         component: ()=> import('@/view/linkKindList/kindList')
       },
       {
-        path:'create_link',
-        name:'create_link',
+        path:'create_kind',
+        name:'create_kind',
         meta:{
           icon: 'md-add',
-          title: '创建链接'
+          title: '创建分类'
         },
         component: ()=> import('@/view/linkKindList/createCategory')
       }
@@ -313,7 +313,105 @@ export default [
     },
     component:Main,
     children:[
-
+      {
+        path:'./rotator',
+        name:'rotator',
+        meta:{
+          icon: 'ios-stats',
+          title: '超链组转盘'
+        },
+        component:()=> import('@/view/createLink/rotatorUrl.vue')
+      },
+      {
+        path:'./super2',
+        name:'super2',
+        meta:{
+          icon: 'ios-stats',
+          title: '超链2'
+        },
+        component:()=> import('@/view/createLink/superLink2.vue')
+      },
+      {
+        path:'./amzLink',
+        name:'amzLink',
+        meta:{
+          icon: 'ios-stats',
+          title: 'AMZ Choice 链接'
+        },
+        component:()=> import('@/view/createLink/AMZChoiceLink.vue')
+      },
+      {
+        path:'./stepBrand',
+        name:'stepBrand',
+        meta:{
+          icon: 'ios-stats',
+          title: '品牌二次链接'
+        },
+        component:()=> import('@/view/createLink/stepTwoBrandLink.vue')
+      },
+      {
+        path:'./starReview',
+        name:'starReview',
+        meta:{
+          icon: 'ios-stats',
+          title: '五星Review链接'
+        },
+        component:()=> import('@/view/createLink/starReviewLink.vue')
+      },
+      {
+        path:'./addToCart',
+        name:'addToCart',
+        meta:{
+          icon: 'ios-stats',
+          title: '产品购物车链接'
+        },
+        component:()=> import('@/view/createLink/addToCartLink.vue')
+      },
+      {
+        path:'./buyTogetherURL',
+        name:'buyTogetherURL',
+        meta:{
+          icon: 'ios-stats',
+          title: '捆绑购买链接'
+        },
+        component:()=> import('@/view/createLink/buyTogetherURL.vue')
+      },
+      {
+        path:'./searchFindBuyLink',
+        name:'searchFindBuyLink',
+        meta:{
+          icon: 'ios-stats',
+          title: '自然搜索链接'
+        },
+        component:()=> import('@/view/createLink/searchFindBuyLink.vue')
+      },
+      {
+        path:'./canonicalLink',
+        name:'canonicalLink',
+        meta:{
+          icon: 'ios-stats',
+          title: '自然链接'
+        },
+        component:()=> import('@/view/createLink/canonicalURL.vue')
+      },
+      {
+        path:'./amazonPlainLink',
+        name:'amazonPlainLink',
+        meta:{
+          icon: 'ios-stats',
+          title: 'DP链接'
+        },
+        component:()=> import('@/view/createLink/amazonPlainURL.vue')
+      },
+      {
+        path:'./anyLink',
+        name:'anyLink',
+        meta:{
+          icon: 'ios-stats',
+          title: '任意链接'
+        },
+        component:()=> import('@/view/createLink/anyURL.vue')
+      },
     ]
   },
   {
