@@ -350,6 +350,15 @@ export default [
         component:()=> import('@/view/createLink/stepTwoBrandLink.vue')
       },
       {
+        path:'./stepStorefrontLink',
+        name:'stepStorefrontLink',
+        meta:{
+          icon: 'ios-stats',
+          title: '店铺二次链接'
+        },
+        component:()=> import('@/view/createLink/stepStorefrontLink.vue')
+      },
+      {
         path:'./starReview',
         name:'starReview',
         meta:{
