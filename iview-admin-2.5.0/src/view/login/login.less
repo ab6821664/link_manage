@@ -1,7 +1,8 @@
 .login{
     width: 100%;
     height: 100%;
-    background-image: url('../../assets/images/login-bg.jpg');
+    //background-image: url('../../assets/images/login-bg.jpg');
+    background: #f3f3f3;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -9,8 +10,9 @@
         position: absolute;
         right: 160px;
         top: 50%;
-        transform: translateY(-60%);
-        width: 300px;
+        transform: translateY(-50%);
+        width: 400px;
+
         &-header{
             font-size: 16px;
             font-weight: 300;
@@ -25,5 +27,19 @@
             text-align: center;
             color: #c3c3c3;
         }
+        .ivu-card{
+          max-height: 600px;
+          overflow-y: auto;
+        }
     }
+}
+
+.c_login-tips {
+  text-align: center;
+  font-size: 32px;
+  width: 600px;
+  margin-left: -100px;
+  margin-bottom: 10px;
+  color: #ccc;
+  text-shadow: 1px 0px 1px #f3f3f3;
 }

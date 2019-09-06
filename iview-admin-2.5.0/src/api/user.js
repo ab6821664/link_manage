@@ -1,4 +1,6 @@
 import axios from '@/libs/api.request'
+import qs from 'qs'
+
 
 export const login = ({ userName, password }) => {
   const data = {
@@ -6,10 +8,18 @@ export const login = ({ userName, password }) => {
     password
   }
   return axios.request({
-    url: 'login',
+    url: '/login/login',
     data,
     method: 'post'
   })
+}
+
+export const register = (params) =>{
+    return axios.request({
+      url:'/login/register',
+      data:qs.stringify(params),
+      method:'post'
+    })
 }
 
 export const getUserInfo = (token) => {

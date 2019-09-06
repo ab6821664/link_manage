@@ -49,3 +49,11 @@ export const getTreeSelectData = () => {
     method: 'get'
   })
 }
+
+export const test = (params)=> {
+  return axios.request({
+    url:'/login/simulated',
+    method: 'post',
+    data:params
+  })
+}

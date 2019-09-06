@@ -35,6 +35,7 @@
   import {ChartBar} from '_c/charts'
   import ChartLine from '_c/charts/line.vue'
   import Example from './example.vue'
+  import { test } from '@/api/data'
 
   export default {
     name: 'home',
@@ -73,7 +74,10 @@
       }
     },
     mounted() {
-      //
+      console.log(55)
+      test({userId:116}).then((res)=>{
+        console.log(res)
+      })
     }
   }
 </script>
