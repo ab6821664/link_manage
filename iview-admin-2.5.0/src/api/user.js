@@ -1,25 +1,41 @@
 import axios from '@/libs/api.request'
 import qs from 'qs'
 
-
-export const login = ({ userName, password }) => {
-  const data = {
-    userName,
-    password
-  }
+// 登录
+export const login = (data) => {
+  console.log(data)
   return axios.request({
     url: '/login/login',
-    data,
+    data:qs.stringify(data),
     method: 'post'
   })
 }
 
+// 注册
 export const register = (params) =>{
     return axios.request({
       url:'/login/register',
       data:qs.stringify(params),
       method:'post'
     })
+}
+
+// 获取邮箱验证码
+export const emailCode= (params)=>{
+  return axios.request({
+    url:'/code/email',
+    data:qs.stringify(params),
+    method:'post'
+  })
+}
+
+// 忘记密码 修改密码
+export const changePassword = (params)=>{
+  return axios.request({
+    url:'/login/forget',
+    method:'post',
+    data:qs.stringify(params)
+  })
 }
 
 export const getUserInfo = (token) => {

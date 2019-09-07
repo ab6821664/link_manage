@@ -13,12 +13,12 @@ import { setToken, getToken } from '@/libs/util'
 
 export default {
   state: {
-    userName: '',
+    username: '',
     userId: '',
     avatorImgPath: '',
     token: getToken(),
-    access: '',
-    hasGetInfo: false,
+    access: ['super_admin', 'admin'],
+    hasGetInfo: true,
     unreadCount: 0,
     messageUnreadList: [],
     messageReadedList: [],
@@ -32,8 +32,8 @@ export default {
     setUserId (state, id) {
       state.userId = id
     },
-    setUserName (state, name) {
-      state.userName = name
+    setusername (state, name) {
+      state.username = name
     },
     setAccess (state, access) {
       state.access = access
@@ -74,16 +74,18 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, { userName, password }) {
-      userName = userName.trim()
+    handleLogin ({ commit }, { username, password }) {
+      username = username.trim()
+     let params = {
+       username:username,
+       password:password
+     }
       return new Promise((resolve, reject) => {
-        login({
-          userName,
-          password
-        }).then(res => {
-          const data = res.data
-          commit('setToken', data.token)
-          resolve()
+        login(params).then(res => {
+          console.log(res)
+          let data = res.data
+          commit('setToken', data.result)
+          resolve(res)
         }).catch(err => {
           reject(err)
         })
@@ -92,13 +94,10 @@ export default {
     // 退出登录
     handleLogOut ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        logout(state.token).then(() => {
-          commit('setToken', '')
-          commit('setAccess', [])
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
+        console.log(state.token)
+        commit('setToken', '')
+        commit('setAccess', [])
+        resolve()
         // 如果你的退出登录无需请求接口，则可以直接使用下面三行代码而无需使用logout调用接口
         // commit('setToken', '')
         // commit('setAccess', [])
@@ -112,7 +111,7 @@ export default {
           getUserInfo(state.token).then(res => {
             const data = res.data
             commit('setAvator', data.avator)
-            commit('setUserName', data.name)
+            commit('setusername', data.name)
             commit('setUserId', data.user_id)
             commit('setAccess', data.access)
             commit('setHasGetInfo', true)

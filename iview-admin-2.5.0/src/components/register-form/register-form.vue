@@ -82,7 +82,7 @@
 export default {
   name: 'RegisterForm',
   props: {
-    userNameRules: {
+    usernameRules: {
       type: Array,
       default: () => {
         return [
@@ -177,7 +177,7 @@ export default {
   computed: {
     rules () {
       return {
-        sellerName: this.userNameRules,
+        sellerName: this.usernameRules,
         email: this.emailRules,
         mobile: this.mobileRules,
         qq: this.qqRules,

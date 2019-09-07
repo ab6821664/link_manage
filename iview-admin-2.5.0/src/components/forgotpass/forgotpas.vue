@@ -38,7 +38,7 @@
 export default {
   name: 'LoginForm',
   props: {
-    userNameRules: {
+    usernameRules: {
       type: Array,
       default: () => {
         return [
@@ -81,7 +81,7 @@ export default {
   computed: {
     rules () {
       return {
-        email: this.userNameRules,
+        email: this.usernameRules,
         newPass: this.passwordRules,
         code:this.codeRules
       }
@@ -92,7 +92,7 @@ export default {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.$Spin.show()
-          userPost.sellerForget(this.form).then(res=>{
+          userPost.changePassword(this.form).then(res=>{
             this.$Spin.hide()
             if(res.data.code === '200'){
              this.$Message.success('修改成功，请用新密码登录')
@@ -113,7 +113,7 @@ export default {
       })
     },getCode(){
       if(this.form.email){
-        userPost.sellerCode(this.form.email).then(res=>{
+        userPost.emailCode({email:this.form.email}).then(res=>{
           if(res.data.code === '200'){
             this.$Message.success('发送成功')
             this.switchBut(2)

@@ -275,8 +275,8 @@
         })
       },
       getCode(){
-        if(this.form.email){
-          userPost.sellerCode(this.form.email).then(res=>{
+        if(/^[A-Za-z\d]+([-_.]*[A-Za-z\d]+)+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(this.form.email)){
+          userPost.emailCode({email:this.form.email}).then(res=>{
             if(res.data.code === '200'){
               this.$Message.success('发送成功')
               this.switchBut(2)
@@ -285,7 +285,7 @@
 
           })
         }else{
-          this.$Message.error('请输入邮箱')
+          this.$Message.error('请输入有效邮箱')
         }
       },
       // 切换按钮状态

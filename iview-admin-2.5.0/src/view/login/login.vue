@@ -93,14 +93,25 @@ export default {
       'handleLogin',
       'getSellerTopinfo'
     ]),
-    handleSubmit ({ userName, password, sellerId }) {
+    handleSubmit ({ username, password, sellerId }) {
       this.$Spin.show()
-      this.handleLogin({ userName, password, sellerId }).then(res => {
-        if (res.code === '200') {
-          localStorage.setItem('firseName',password)
-          localStorage.setItem('lastName',userName)
-          let tempToken = res.result
-          this.getSellerTopinfo().then(res => {
+      this.handleLogin({ username, password }).then(res => {
+        console.log('111111111')
+        if (res.status=='200' ) {
+          if(res.data.code=='200'){
+            let data = res.data;
+            localStorage.setItem('lastName',username)
+            localStorage.setItem('token',data.result)
+            this.$Spin.hide();
+            this.$router.push({
+              path: '/home'
+            })
+          }else {
+            this.$Spin.hide()
+            this.$Message.error(res.data.msg)
+          }
+
+         /* this.getSellerTopinfo().then(res => {
             this.$Spin.hide()
             if (res.code === '200') {
               if(res.result.noSetMeal ){
@@ -138,12 +149,7 @@ export default {
                 this.$Message.error(res.msg)
               }
             }
-          })
-
-
-
-
-
+          })*/
         }else {
           this.$Spin.hide()
           if (res) {
@@ -151,32 +157,12 @@ export default {
           }
         }
       }).catch(res => {
+        console.log(9898988)
+        console.log(res)
         this.$Spin.hide()
         if (res) {
+          console.log(res,'dddd')
           this.$Message.error(res.msg)
-        }
-      })
-    },
-    registerSubmit (formData){
-      this.registerShow = true
-      this.$Spin.show()
-      bsRegister(formData).then(res =>{
-        this.$Spin.hide()
-        if (res.data.code === '200') {
-          this.shType = 1
-          this.registerShow = false
-          this.$Message.success('注册成功，请登录')
-        }else {
-          if (res.data) {
-            this.registerShow = false
-            this.$Message.error(res.data.msg)
-          }
-        }
-      }).catch(res => {
-        this.$Spin.hide()
-        if (res.data) {
-          this.registerShow = false
-          this.$Message.error(res.data.msg)
         }
       })
     },
