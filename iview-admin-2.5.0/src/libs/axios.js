@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
+import {getToken} from '@/libs/util'
 // import { Spin } from 'iview'
 const addErrorLog = errorInfo => {
   const { statusText, status, request: { responseURL } } = errorInfo
@@ -35,6 +36,9 @@ class HttpRequest {
   interceptors (instance, url) {
     // 请求拦截
     instance.interceptors.request.use(config => {
+      if (config.url){
+        config.headers['token'] = getToken()
+      }
       // 添加全局的loading...
       if (!Object.keys(this.queue).length) {
         // Spin.show() // 不建议开启，因为界面不友好
@@ -48,8 +52,9 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       this.destroy(url)
       const { data, status } = res
-      return { data, status }
+      return { data }.data
     }, error => {
+      console.log(error)
       this.destroy(url)
       let errorInfo = error.response
       if (!errorInfo) {
@@ -60,7 +65,7 @@ class HttpRequest {
           request: { responseURL: config.url }
         }
       }
-      addErrorLog(errorInfo)
+    //  addErrorLog(errorInfo)
       return Promise.reject(error)
     })
   }
